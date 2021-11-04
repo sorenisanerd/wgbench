@@ -58,10 +58,10 @@ echo '#                                            #'
 echo '#    Running iperf on non-wireguard link     #'
 echo '#                                            #'
 echo '##############################################'
-ip netns exec wgbench1 iperf -c 192.168.44.2 -t 5 -d
+ip netns exec wgbench1 iperf -c 192.168.44.2 -t 5
 echo '##############################################'
 echo '#                                            #'
 echo '#      Running iperf on wireguard link       #'
 echo '#                                            #'
 echo '##############################################'
-ip netns exec wgbench1 iperf -c 192.168.45.2 -t 5 -d
+ip netns exec wgbench1 iperf -c 192.168.45.2 -t 5
