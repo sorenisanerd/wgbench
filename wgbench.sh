@@ -11,6 +11,7 @@ fi
 
 do_cleanup() {
 	echo cleaning up
+	set +e
 	eval "${cleancmds}"
 }
 
