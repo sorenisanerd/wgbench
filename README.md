@@ -2,7 +2,9 @@
 
 This is a stupidly simple benchmarking tool for wireguard.
 
-It creates two new network namespaces and a veth link between them. Then it creates wireguard interfaces inside each and runs iperf between them. First without wireguard, then with wireguard. Here's an example from a Netgear AC750:
+It creates two new network namespaces and a veth link between them. Then it creates wireguard interfaces inside each and runs iperf between them. First without wireguard, then with wireguard. 
+
+Here's an example from a Netgear AC750:
 ```
 root@OpenWrt:~/wgbench# ./wgbench.sh 
 ##############################################
@@ -43,3 +45,5 @@ TCP window size:  324 KByte (default)
 [  3]  0.0- 5.0 sec  26.6 MBytes  44.7 Mbits/sec
 cleaning up
 ```
+
+Without the overhead of wireguard encryption/decryption, it can process 424 Mbit/sec. With wireguard encryption AND decryption, it process 44.7 Mbit/s.
