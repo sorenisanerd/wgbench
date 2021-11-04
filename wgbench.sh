@@ -45,6 +45,12 @@ do
 	ip netns exec wgbench$i wg setconf wgbench$i wgbench$i.conf 
 done
 
+echo '##############################################'
+echo '#                                            #'
+echo '#            Triggering handshake            #'
+echo '#                                            #'
+echo '##############################################'
+ip netns exec wgbench1 ping -c 1 192.168.45.2
 ip netns exec wgbench2 iperf -s -D
 cleanup 'kill $(${ps} | grep "[i]perf -s -D" | awk -- "{ print \$1 }")'
 echo '##############################################'
