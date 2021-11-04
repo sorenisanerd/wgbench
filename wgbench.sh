@@ -15,7 +15,7 @@ do_cleanup() {
 	eval "${cleancmds}"
 }
 
-trap do_cleanup EXIT
+trap do_cleanup EXIT INT
 
 cleanup() {
 	cleancmds="$@; ${cleancmds}"
