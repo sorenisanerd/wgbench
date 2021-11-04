@@ -2,6 +2,13 @@
 
 set -e
 
+if [ "$(readlink $(which ps))" = "busybox" ]
+then
+	ps="ps w"
+else
+	ps="ps ax"
+fi
+
 do_cleanup() {
 	echo cleaning up
 	eval "${cleancmds}"
@@ -38,7 +45,7 @@ do
 done
 
 ip netns exec wgbench2 iperf -s -D
-cleanup 'ip netns exec wgbench2 sh -c '"'"'pkill -f "^iperf -s -D$" --ns $$ --nslist net'"'"
+cleanup 'kill $(${ps} | grep "[i]perf -s -D" | awk -- "{ print \$1 }")'
 echo '##############################################'
 echo '#                                            #'
 echo '#    Running iperf on non-wireguard link     #'
