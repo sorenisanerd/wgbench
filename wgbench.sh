@@ -21,7 +21,7 @@ cleanup() {
 	cleancmds="$@; ${cleancmds}"
 }
 
-ip link add wgbenchlink1 type veth peer wgbenchlink2 
+ip link add wgbenchlink1 type veth peer name wgbenchlink2 
 cleanup 'ip link del wgbenchlink1 2> /dev/null || true'
 cleanup 'ip link del wgbenchlink2 2> /dev/null || true'
 
